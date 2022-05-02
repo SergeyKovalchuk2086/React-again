@@ -1,5 +1,5 @@
 import './App.css';
-import Header from './components/Header';
+import Header from './components/Header/Header';
 import ContentWrapper from './components/Content-wrapper';
 
 function App() {
