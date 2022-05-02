@@ -1,22 +1,14 @@
 import './App.css';
+import Header from './components/Header';
+import ContentWrapper from './components/Content-wrapper';
 
 function App() {
   return (
-    <div className='App'>
-      <p className='word'>Hi</p>
+    <div className='app-wrapper'>
       <Header />
+      <ContentWrapper />
     </div>
   );
-}
-
-function Header() {
-  return (
-    <div>
-      <a href='http://vk.com'>
-        Hello
-      </a>
-    </div>
-  )
 }
 
 export default App;
