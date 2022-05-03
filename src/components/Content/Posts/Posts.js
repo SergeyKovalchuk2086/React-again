@@ -4,7 +4,10 @@ import Post from './Post/Post';
 
 const Posts = () => {
   return (
-    <Post />
+    <div>
+      <Post message='Hi' />
+      <Post message='powel nahui' />
+    </div>
   );
 };
 
