@@ -1,5 +1,6 @@
 .content-wrapper__navbar {
    display: flex;
+   min-width: 100px;
    flex-direction: column;
    border: 1px solid blue;
    background-color: rgb(77, 231, 231);
