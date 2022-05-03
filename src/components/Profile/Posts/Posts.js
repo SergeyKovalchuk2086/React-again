@@ -5,7 +5,7 @@ import Post from './Post/Post';
 const Posts = () => {
   return (
     <div>
-      <Post message='Hi' />
+      <Post message='Hi' likes='20'/>
       <Post message='powel nahui' />
     </div>
   );

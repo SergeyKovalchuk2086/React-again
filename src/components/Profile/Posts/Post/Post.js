@@ -7,6 +7,7 @@ const Post = (props) => {
       <img src="https://i.imgur.com/dmRcOOI.png" alt="ava" />
       <p>Как уебу сука!</p>
       <p>{props.message}</p>
+      <p>{props.likes}</p>
     </div>
   );
 };

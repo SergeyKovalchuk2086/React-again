@@ -1,14 +1,13 @@
 import React from 'react';
+import { NavLink } from 'react-router-dom';
 import './Navbar.css';
 
 const Navbar = () => {
   return (
     <div className='content-wrapper__navbar'>
-      <ul>
-        <li>News</li>
-        <li>Messages</li>
-        <li>Settings</li>
-      </ul>
+      <NavLink to='/'>News</NavLink>
+      <NavLink to='/Dialogs'>Dialogs</NavLink>
+      <NavLink to='/Profile'>Profile</NavLink>
     </div>
   );
 };
