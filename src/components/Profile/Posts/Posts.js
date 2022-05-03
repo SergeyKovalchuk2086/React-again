@@ -6,7 +6,7 @@ const Posts = () => {
   return (
     <div className='posts__container'>
       <Post message='Hi' likes='20'/>
-      <Post message='powel nahui' />
+      <Post message='powel nahui' likes='999'/>
     </div>
   );
 };
