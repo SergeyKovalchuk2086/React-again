@@ -1,3 +1,16 @@
 .content-wrapper__navbar {
+   display: flex;
+   flex-direction: column;
    border: 1px solid blue;
+   background-color: rgb(77, 231, 231);
+}
+
+.content-wrapper__navbar a {
+   text-decoration: none;
+   color: rgb(84, 10, 182);
+}
+
+.content-wrapper__navbar .active {
+   color: rgb(150, 87, 6);
+   text-decoration: underline;
 }
