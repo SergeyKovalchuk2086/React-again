@@ -1,9 +1,12 @@
-.post {
+.post__container {
+   padding: 10px;
    display: flex;
+   align-items: center;
    border: 1px solid black;
 }
 
-.post img {
+.post__container img {
    width: 35px;
    height: 35px;
+   margin-right: 20px;
 }

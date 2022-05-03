@@ -4,7 +4,7 @@ import Post from './Post/Post';
 
 const Posts = () => {
   return (
-    <div>
+    <div className='posts__container'>
       <Post message='Hi' likes='20'/>
       <Post message='powel nahui' />
     </div>

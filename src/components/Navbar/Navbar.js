@@ -6,9 +6,9 @@ import './Navbar.css';
 const Navbar = () => {
   return (
     <div className='content-wrapper__navbar'>
-      <NavLink to='/profile'>Profile</NavLink>
+      <NavLink to='profile/'>Profile</NavLink>
       <NavLink to='/'>News</NavLink>
-      <NavLink to='/dialogs'>Messages</NavLink>
+      <NavLink to='dialogs/'>Messages</NavLink>
     </div>
   );
 };
