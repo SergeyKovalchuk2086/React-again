@@ -5,10 +5,10 @@ import Message from './Message/Message';
 
 const Dialogs = (props) => {
   let newArr = 
-  props.dialogs.map(dialog => <Dialog name={dialog.name} id={dialog.id} key={dialog.id} />)
+  props.dialogsMessagesData.dialogs.map(dialog => <Dialog name={dialog.name} id={dialog.id} key={dialog.id} />)
   
   let newArr2 = 
-  props.messages.map(message => <Message message={message.text} key={message.id} />)
+  props.dialogsMessagesData.messages.map(message => <Message message={message.text} key={message.id} />)
 
   return (
     <div className='dialogs__container'>
