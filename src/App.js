@@ -6,6 +6,7 @@ import Dialogs from './components/Dialogs/Dialogs';
 import Profile from './components/Profile/Profile';
 
 function App(props) {
+  console.log('props in APP :',props);
   return (
     <BrowserRouter>
         <Header />
@@ -14,7 +15,7 @@ function App(props) {
           <div className='content'>
             <Routes>
               <Route path='profile/'
-                element={<Profile postsData={props.state.profilePage} />} />
+                element={<Profile postsData={props.state.profilePage} addPost={props.addPost}/>} />
               <Route path='dialogs/'
                 element={<Dialogs dialogsMessagesData={props.state.dialogsPage} />} />
             </Routes>

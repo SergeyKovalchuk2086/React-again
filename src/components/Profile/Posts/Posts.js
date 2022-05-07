@@ -1,6 +1,8 @@
 import React from 'react';
 import './Posts.css';
 import Post from './Post/Post';
+// import { addPost } from '../../../state';
+import state from '../../../state';
 
 const Posts = (props) => {
   let posts = props.posts.map((post, id) => <Post message={post.message} key={id} likes={post.likes} />)
@@ -10,6 +12,8 @@ const Posts = (props) => {
   function log() {
     let temp = newPostElement.current.value
     console.log('text :', temp)
+    props.addPost(temp)
+    console.log('state :', state);
   }
 
   return (
