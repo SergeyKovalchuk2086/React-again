@@ -15,7 +15,7 @@ function App(props) {
           <div className='content'>
             <Routes>
               <Route path='profile/'
-                element={<Profile postsData={props.state.profilePage} addPost={props.addPost} updateNewPostText={props.updateNewPostText} />} />
+                element={<Profile postsData={props.state.profilePage} dispatch={props.dispatch} />} />
               <Route path='dialogs/'
                 element={<Dialogs dialogsMessagesData={props.state.dialogsPage} />} />
             </Routes>
