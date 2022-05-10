@@ -1,7 +1,7 @@
 import React from 'react';
 import './Posts.css';
 import Post from './Post/Post';
-// import { addPost } from '../../../state';
+import { addPostActionCreator, updateNewPostTextActionCreator } from '../../../state';
 
 const Posts = (props) => {
   let posts = props.posts.map((post, id) => <Post message={post.message} key={id} likes={post.likes} />)
@@ -9,16 +9,12 @@ const Posts = (props) => {
   let newPostElement = React.createRef()
 
   function addPost() {
-    props.dispatch({
-      type: 'ADD-POST'
-    })
+    props.dispatch(addPostActionCreator())
   }
 
   function changePostText() {
-    props.dispatch({
-      type: 'UPDATE-NEW-POST-TEXT',
-      postText: newPostElement.current.value 
-    })
+    let text = newPostElement.current.value
+    props.dispatch(updateNewPostTextActionCreator(text))
   }
 
   return (
