@@ -2,6 +2,7 @@ import React from 'react';
 import './Dialogs.css'
 import Dialog from './Dialog/Dialog';
 import Message from './Message/Message';
+import {updateNewMessageBodyCreator, sendMessageCreator} from '../../redux/dialogsReducer'
 
 const Dialogs = (props) => {
   let newArr = 
@@ -10,10 +11,12 @@ const Dialogs = (props) => {
   let newArr2 = 
   props.dialogsMessagesData.messages.map(message => <Message message={message.text} key={message.id} />)
 
-  let textareaRef = React.createRef()
+  function changeMessageText(e) {
+    props.dispatch(updateNewMessageBodyCreator(e.target.value))
+  }
 
   function addMessage() {
-    console.log('messgae :', textareaRef.current.value);
+    props.dispatch(sendMessageCreator())
   }
 
   return (
@@ -26,7 +29,7 @@ const Dialogs = (props) => {
 
       <div className='dialogs__messages'>
 				{newArr2}
-        <textarea ref={ textareaRef }></textarea>
+        <textarea onChange={changeMessageText} value={props.dialogsMessagesData.newMessageBody} ></textarea>
         <button onClick={ addMessage }>Add message</button>
       </div>
     </div>
