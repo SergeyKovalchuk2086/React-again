@@ -1,6 +1,30 @@
 import constants from "../constant";
 
-const dialogsReducer = (state, action) => {
+let initialState = {
+	dialogs: [
+		{
+			id: 1,
+			name: 'Bogdan'
+		},
+		{
+			id: 2,
+			name: 'Alexandra'
+		}
+	],
+	messages: [
+		{
+			id: 1,
+			text: 'Hello, I`m Bogdan'
+		},
+		{
+			id: 2,
+			text: 'Hello, I`m ALexa'
+		}
+	],
+	newMessageBody: 'new'
+}
+
+const dialogsReducer = (state = initialState, action) => {
 	switch (action.type) {
 		case constants.UPDATE_NEW_MESSAGE_BODY:
 			state.newMessageBody = action.body
