@@ -1,6 +1,22 @@
 import constants from "../constant";
 
-const profileReducer = (state, action) => {
+let initialState = {
+	posts: [
+		{
+			id: 1,
+			message: 'Hi',
+			likes: 20
+		},
+		{
+			id: 2,
+			message: 'powel nahui',
+			likes: 999
+		},
+	],
+	newPostText: 'Hello bitch'
+}
+
+const profileReducer = (state = initialState, action) => {
 	switch (action.type) {
 		case constants.ADD_POST:
 			let newPost = {
