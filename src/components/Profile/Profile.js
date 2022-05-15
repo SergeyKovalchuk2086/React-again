@@ -12,11 +12,12 @@ const Profile = (props) => {
       newPostText={props.postsData.newPostText}
       dispatch={props.dispatch}
       /> */}
-      <MyPostContainer
+      {/* <MyPostContainer
         posts={props.postsData.posts}
         newPostText={props.postsData.newPostText}
         dispatch={props.dispatch}
-      />
+      /> */}
+      <MyPostContainer />
     </div>
   )
 }
