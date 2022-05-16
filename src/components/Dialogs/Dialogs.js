@@ -6,10 +6,10 @@ import Message from './Message/Message';
 const Dialogs = (props) => {
   console.log('props dialogs :', props);
   let dialogs = 
-    props.dialogs.map(dialog => <Dialog name={dialog.name} id={dialog.id} key={dialog.id} />)
+    props.dialogsPage.dialogs.map(dialog => <Dialog name={dialog.name} id={dialog.id} key={dialog.id} />)
         
   let messages = 
-    props.messages.map(message => <Message message={message.text} key={message.id} />)
+    props.dialogsPage.messages.map(message => <Message message={message.text} key={message.id} />)
 
   return (
         <div className='dialogs__container'>
@@ -21,7 +21,7 @@ const Dialogs = (props) => {
 
           <div className='dialogs__messages'>
             {messages}
-            <textarea onChange={props.changeMessageText} value={props.newMessageBody} ></textarea>
+            <textarea onChange={props.dialogsPage.changeMessageText} value={props.newMessageBody} ></textarea>
             <button onClick={props.addMessage}>Add message</button>
           </div>
       </div>
