@@ -1,5 +1,6 @@
 import dialogsReducer from "./dialogsReducer";
 import profileReducer from "./profileReducer";
+import usersReducer from "./usersReducer";
 
 let store = {
 	_state: {
@@ -40,6 +41,24 @@ let store = {
 				}
 			],
 			newMessageBody: 'new'
+		},
+		usersPage: {
+			users: [
+				{
+					id: 1,
+					followed: false,
+					fullName: 'Bogdan',
+					status: 'Сonstructor',
+					location: 'Tomsk'
+				},
+				{
+					id: 2,
+					followed: false,
+					fullName: 'Serega',
+					status: 'Developer',
+					location: 'Tomsk'
+				},
+			]
 		}
 	},
 
@@ -53,10 +72,12 @@ let store = {
 	dispatch(action) {
 		this._state.profilePage = profileReducer(this._state.profilePage, action)
 		this._state.dialogsPage = dialogsReducer(this._state.dialogsPage, action)
+		this._state.usersPage = usersReducer(this._state.usersPage, action)
 
 		this.rerenderEntireTree(this._state)
 	}
 }
 
-export default store;
 window.store = store;
+export default store;
+

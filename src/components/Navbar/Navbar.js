@@ -7,7 +7,7 @@ const Navbar = () => {
   return (
     <div className='content-wrapper__navbar'>
       <NavLink to='profile/'>Profile</NavLink>
-      <NavLink to='/'>News</NavLink>
+      <NavLink to='users/'>Users</NavLink>
       <NavLink to='dialogs/'>Messages</NavLink>
     </div>
   );

@@ -30,7 +30,6 @@ import { addPostActionCreator, updateNewPostTextActionCreator } from '../../../r
 // };
 
 let mapStateToProps = (state) => {
-  console.log('state :', state);
   return {
     profilePage: state.profilePage
   }
