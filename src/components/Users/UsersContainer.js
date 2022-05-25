@@ -12,7 +12,6 @@ let mapStateToProps = (state) => {
 let mapDispatchToProps = (dispatch) => {
   return {
     follow: (userId) => {
-      console.log('userId container:', userId);
       dispatch(followAC(userId))
     },
     unfollow: (userId) => {

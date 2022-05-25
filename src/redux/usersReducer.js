@@ -3,20 +3,7 @@ import constants from "../constant";
 let initialState = {
 	users:  
 	[
-		{
-			id: 1,
-			followed: true,
-			fullName: 'Bogdan',
-			status: 'Сonstructor',
-			location: 'Tomsk'
-		},
-		{
-			id: 2,
-			followed: false,
-			fullName: 'Serega',
-			status: 'Developer',
-			location: 'Tomsk'
-		},
+
 	]
 }
 

@@ -1,34 +1,19 @@
+import axios from 'axios';
 import React from 'react';
-import { setUsersAC } from '../../redux/usersReducer';
 import './Users.css';
 
 const Users = (props) => {
   console.log('props in Users', props);
+  let getUsers = () => {
+    axios
+    .get('https://jsonplaceholder.typicode.com/users?param=10')
+    .then(data => props.setUsers(data.data))
+  }
   
-  // if(props.usersPage.users.length === 0){
-  //   props.setUsers(
-  //     [
-  //     {
-  //       id: 1,
-  //       followed: true,
-  //       fullName: 'Bogdan',
-  //       status: 'Сonstructor',
-  //       location: 'Tomsk'
-  //     },
-  //     {
-  //       id: 2,
-  //       followed: false,
-  //       fullName: 'Serega',
-  //       status: 'Developer',
-  //       location: 'Tomsk'
-  //     },
-  //   ]
-  //   )
-  // }
-
   return (
     <div className='users__container'>
       <p>Users</p>
+      <button onClick={ () => getUsers() }>Get Users</button>
       {
         props.usersPage.users.map(user => <div key={user.id} className="user">
           <span>
@@ -44,11 +29,10 @@ const Users = (props) => {
             </div>
           </span>
           <span>
-            <div>{user.fullName}</div>
-            <div>{user.status}</div>
+            <div>User : {user.name}{user.username}</div>
           </span>
           <span>
-            <div>{user.location}</div>
+            <div>Address : {user.address.street}</div>
           </span>
         </div>
         )
