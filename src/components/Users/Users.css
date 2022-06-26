@@ -2,3 +2,11 @@
    margin-top: 15px;
    border: 1px solid black;
 }
+
+span {
+   margin-right: 10px;
+}
+
+.current {
+   font-weight: bold;
+}
