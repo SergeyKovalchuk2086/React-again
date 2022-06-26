@@ -1,23 +1,10 @@
 import constants from "../constant";
 
 let initialState = {
-	users:  
-	[
-		{
-			id: 1,
-			followed: true,
-			fullName: 'Bogdan',
-			status: 'Сonstructor',
-			location: 'Tomsk'
-		},
-		{
-			id: 2,
-			followed: false,
-			fullName: 'Serega',
-			status: 'Developer',
-			location: 'Tomsk'
-		},
-	]
+	users: [],
+	pageSize: 20,
+	totalUsersCount: 0,
+	currentPage: 1
 }
 
 const usersReducer = (state = initialState, action) => {
@@ -46,7 +33,17 @@ const usersReducer = (state = initialState, action) => {
 
 		case constants.SET_USERS:
 			return {
-				...state, users: [...state.users, ...action.users]
+				...state, users: action.users
+			}
+
+		case constants.SET_CURRENT_PAGE:
+			return {
+				...state, currentPage: action.currentPage
+			}
+
+		case constants.SET_USERS_COUNT:
+			return {
+				...state, totalUsersCount: action.count
 			}
 
 		default:
@@ -56,7 +53,6 @@ const usersReducer = (state = initialState, action) => {
 }
 
 export const followAC = (userId) => {
-	console.log('userId AC:', userId);
 	return {
 		type: constants.FOLLOW,
 		userId: userId
@@ -74,6 +70,20 @@ export const setUsersAC = (users) => {
 	return {
 		type: constants.SET_USERS,
 		users: users
+	}
+}
+
+export const setPageAC = (currentPage) => {
+	return {
+		type: constants.SET_CURRENT_PAGE,
+		currentPage: currentPage
+	}
+}
+
+export const setUsersCountAC = (count) => {
+	return {
+		type: constants.SET_USERS_COUNT,
+		count: count
 	}
 }
 
