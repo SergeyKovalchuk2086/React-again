@@ -7,7 +7,7 @@ let users = (props) => {
     let pages = []
     for (let i = 1; i <= pagesCount; i++) {
         pages.push(i)
-        if(i === 20) break
+        if(i === 10) break
     }
 
     return ( <div className='users__container'>

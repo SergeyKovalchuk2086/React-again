@@ -7,7 +7,8 @@ const constants = {
     UNFOLLOW : 'UNFOLLOW',
     SET_USERS : 'SET_USERS',
     SET_CURRENT_PAGE : 'SET_CURRENT_PAGE',
-    SET_USERS_COUNT : 'SET_USERS_COUNT'
+    SET_USERS_COUNT : 'SET_USERS_COUNT',
+    TOGGLE_IS_FETCHING : 'TOGGLE_IS_FETCHING'
 }
 
 export default constants;
