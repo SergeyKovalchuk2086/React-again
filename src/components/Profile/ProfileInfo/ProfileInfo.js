@@ -2,7 +2,6 @@ import React from 'react';
 import './ProfileInfo.css';
 
 const ProfileInfo = (props) => {
-    console.log('props in PROFILE INFO', props)
   return (
       <div>
       <img

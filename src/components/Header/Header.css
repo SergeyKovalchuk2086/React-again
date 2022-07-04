@@ -1,5 +1,9 @@
 .app-wrapper__header {
    border: 1px solid green;
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+   padding: 10px;
 }
 
 .app-wrapper__header img {

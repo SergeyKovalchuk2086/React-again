@@ -1,10 +1,8 @@
 import React from 'react';
 import './Posts.css';
 import Post from './Post/Post';
-// import { addPostActionCreator, updateNewPostTextActionCreator } from '../../../redux/profileReducer';
 
 const Posts = (props) => {
-  console.log('props :', props);
   let posts = props.profilePage.posts.map((post, id) => <Post message={post.message} key={id} likes={post.likes} />)
 
   let newPostElement = React.createRef()

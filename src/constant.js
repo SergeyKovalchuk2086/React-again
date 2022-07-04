@@ -10,7 +10,9 @@ const constants = {
     SET_USERS_COUNT : 'SET_USERS_COUNT',
     TOGGLE_IS_FETCHING : 'TOGGLE_IS_FETCHING',
 
-    SET_USER_PROFILE : 'SET_USER_PROFILE'
+    SET_USER_PROFILE : 'SET_USER_PROFILE',
+
+    SET_USER_DATA : 'SET_USER_DATA'
 }
 
 export default constants;
