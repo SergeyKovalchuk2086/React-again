@@ -1,6 +1,7 @@
 import React from "react";
 import './Users.css'
 import {NavLink} from "react-router-dom";
+import axios from "axios";
 
 let users = (props) => {
     let pagesCount = Math.ceil(props.totalUsersCount / props.pageSize )
@@ -9,6 +10,36 @@ let users = (props) => {
     for (let i = 1; i <= pagesCount; i++) {
         pages.push(i)
         if(i === 10) break
+    }
+
+    let requestFollow = (userId) => {
+        axios
+            .delete(`https://social-network.samuraijs.com/api/1.0/follow/${userId}`, {
+                withCredentials: true,
+                headers: {
+                    'API-KEY' : 'badf1b4f-6a6a-4fe5-a6ed-482f613ccdfd'
+                }
+            })
+            .then(response => {
+                if (response.data.resultCode === 0) {
+                    props.follow(userId)
+                }
+            })
+    }
+
+    let requestUnfollow = (userId) => {
+        axios
+            .post(`https://social-network.samuraijs.com/api/1.0/follow/${userId}`, {}, {
+                withCredentials: true,
+                headers: {
+                    'API-KEY': 'badf1b4f-6a6a-4fe5-a6ed-482f613ccdfd'
+                }
+            })
+            .then(response => {
+                if (response.data.resultCode === 0) {
+                    props.unfollow(userId)
+                }
+            })
     }
 
     return ( <div className='users__container'>
@@ -24,8 +55,8 @@ let users = (props) => {
                   <div>
                     {
                         user.followed
-                            ? <button onClick={ () => props.follow(user.id)}>Unfollow</button>
-                            : <button onClick={ () => props.unfollow(user.id)}>Follow</button>
+                            ? <button onClick={ () => requestFollow(user.id)}>Unfollow</button>
+                            : <button onClick={ () => requestUnfollow(user.id)}>Follow</button>
                     }
                   </div>
                 </span>
