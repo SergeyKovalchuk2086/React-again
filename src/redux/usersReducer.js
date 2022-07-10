@@ -5,7 +5,8 @@ let initialState = {
 	pageSize: 20,
 	totalUsersCount: 0,
 	currentPage: 1,
-	isFetching: false
+	isFetching: false,
+	followInProgress: false
 }
 
 const usersReducer = (state = initialState, action) => {
@@ -49,6 +50,10 @@ const usersReducer = (state = initialState, action) => {
 		case constants.TOGGLE_IS_FETCHING:
 			return {
 				...state, isFetching: action.isFetching
+			}
+		case constants.TOGGLE_IS_FOLLOWING_PROGRESS:
+			return {
+				...state, followInProgress: action.inProgress
 			}
 
 		default:
@@ -99,6 +104,11 @@ export const setIsFetching = (payload) => {
 	}
 }
 
-
+export const setInProgress = (payload) => {
+	return {
+		type: constants.TOGGLE_IS_FOLLOWING_PROGRESS,
+		inProgress: payload
+	}
+}
 
 export default usersReducer
