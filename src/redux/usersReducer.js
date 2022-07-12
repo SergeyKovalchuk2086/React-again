@@ -1,4 +1,5 @@
 import constants from "../constant";
+import {getUsers, followRequest, unfollowRequest} from "../api/api";
 
 let initialState = {
 	users: [],
@@ -62,6 +63,8 @@ const usersReducer = (state = initialState, action) => {
    return state
 }
 
+//ниже обычные action (creator)
+
 export const follow = (userId) => {
 	return {
 		type: constants.FOLLOW,
@@ -108,6 +111,52 @@ export const setInProgress = (payload) => {
 	return {
 		type: constants.TOGGLE_IS_FOLLOWING_PROGRESS,
 		inProgress: payload
+	}
+}
+
+//ниже thunk (creator)
+
+export const getUsersThunkCreator = (currentPage, pageSize) => {
+	return (dispath) => {
+		//loader
+		dispath(setIsFetching(true))
+
+		getUsers(currentPage, pageSize).then(data => {
+			dispath(setUsers(data.items))
+			dispath(setUsersCount(data.totalCount))
+		})
+		//loader
+		dispath(setIsFetching(false))
+	}
+}
+
+export const followThunkCreator = (userId) => {
+	return (dispath) => {
+		//в прогрессе для disabled button
+		dispath(setInProgress(true))
+
+		followRequest(userId).then(data => {
+			if (data.resultCode === 0) {
+				dispath(follow(userId))
+			}
+		})
+		//в прогрессе для disabled button
+		dispath(setInProgress(false))
+	}
+}
+
+export const unFollowThunkCreator = (userId) => {
+	return (dispath) => {
+		//в прогрессе для disabled button
+		dispath(setInProgress(true))
+
+		unfollowRequest(userId).then(data => {
+			if (data.resultCode === 0) {
+				dispath(unfollow(userId))
+			}
+		})
+		//в прогрессе для disabled button
+		dispath(setInProgress(false))
 	}
 }
 

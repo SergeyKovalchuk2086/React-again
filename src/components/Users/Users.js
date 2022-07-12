@@ -13,37 +13,40 @@ let users = (props) => {
   }
 
   let requestFollow = (userId) => {
-    props.setInProgress(true)
-    axios
-      .delete(`https://social-network.samuraijs.com/api/1.0/follow/${userId}`, {
-        withCredentials: true,
-        headers: {
-          'API-KEY' : 'badf1b4f-6a6a-4fe5-a6ed-482f613ccdfd'
-        }
-      })
-      .then(response => {
-        if (response.data.resultCode === 0) {
-          props.follow(userId)
-        }
-        props.setInProgress(false)
-      })
+    props.followThunkCreator(userId)
+    // props.setInProgress(true)
+    // axios
+    //   .delete(`https://social-network.samuraijs.com/api/1.0/follow/${userId}`, {
+    //     withCredentials: true,
+    //     headers: {
+    //       'API-KEY' : 'badf1b4f-6a6a-4fe5-a6ed-482f613ccdfd'
+    //     }
+    //   })
+    //   .then(response => {
+    //     if (response.data.resultCode === 0) {
+    //       props.follow(userId)
+    //     }
+    //     props.setInProgress(false)
+    //   })
   }
 
   let requestUnfollow = (userId) => {
-    props.setInProgress(true)
-    axios
-      .post(`https://social-network.samuraijs.com/api/1.0/follow/${userId}`, {}, {
-        withCredentials: true,
-        headers: {
-          'API-KEY': 'badf1b4f-6a6a-4fe5-a6ed-482f613ccdfd'
-        }
-      })
-      .then(response => {
-        if (response.data.resultCode === 0) {
-          props.unfollow(userId)
-        }
-        props.setInProgress(false)
-      })
+    props.unfollowThunkCreator(userId)
+
+    // props.setInProgress(true)
+    // axios
+    //   .post(`https://social-network.samuraijs.com/api/1.0/follow/${userId}`, {}, {
+    //     withCredentials: true,
+    //     headers: {
+    //       'API-KEY': 'badf1b4f-6a6a-4fe5-a6ed-482f613ccdfd'
+    //     }
+    //   })
+    //   .then(response => {
+    //     if (response.data.resultCode === 0) {
+    //       props.unfollow(userId)
+    //     }
+    //     props.setInProgress(false)
+    //   })
   }
 
   return ( <div className='users__container'>

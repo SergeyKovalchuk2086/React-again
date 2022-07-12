@@ -1,39 +1,26 @@
 import {
   follow,
   unfollow,
-  setUsers,
   setPage,
-  setUsersCount,
-  setIsFetching,
-  setInProgress
+  setInProgress, getUsersThunkCreator, followThunkCreator, unFollowThunkCreator
 } from '../../redux/usersReducer'
 import { connect } from 'react-redux';
 import React from "react";
 import Users from "./Users";
 import Preloader from "../Preloader/Preloader";
-import {getUsers} from "../../api/api";
 
 class UsersCont extends React.Component {
   //запрос юзеров
   componentDidMount() {
-    //loader
-    this.props.setIsFetching(true)
-
-    getUsers(this.props.currentPage, this.props.pageSize).then(data => {
-      this.props.setUsers(data.items)
-      this.props.setUsersCount(data.totalCount)
-    })
-    //loader
-    this.props.setIsFetching(false)
+    //thunk функция
+    this.props.getUsersThunkCreator(this.props.currentPage, this.props.pageSize)
   }
 
   //пагинация
   changePage = (page) => {
     this.props.setPage(page)
-
-    getUsers(page, this.props.pageSize).then(data => {
-      this.props.setUsers(data.items)
-    })
+    //thunk функция
+    this.props.getUsersThunkCreator(page, this.props.pageSize)
   }
 
   render() {
@@ -50,6 +37,8 @@ class UsersCont extends React.Component {
           isFetching = { this.props.isFetching }
           inProgress = { this.props.inProgress }
           setInProgress = { this.props.setInProgress }
+          followThunkCreator = { this.props.followThunkCreator }
+          unfollowThunkCreator = { this.props.unFollowThunkCreator }
       />
     </React.Fragment>
   }
@@ -69,11 +58,11 @@ let mapStateToProps = (state) => {
 const UsersContainer = connect(mapStateToProps, {
   follow,
   unfollow,
-  setUsers,
   setPage,
-  setUsersCount,
-  setIsFetching,
-  setInProgress
+  setInProgress,
+  getUsersThunkCreator,
+  followThunkCreator,
+  unFollowThunkCreator
 })(UsersCont)
 
 export default UsersContainer;

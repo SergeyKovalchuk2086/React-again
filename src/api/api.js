@@ -10,8 +10,18 @@ const axiosInstance = axios.create({
 
 export const getUsers = (currentPage, pageSize) => {
   return axiosInstance
-    .get(`users?page=${currentPage}&count=${pageSize}`, {
-      withCredentials : true
-    })
+    .get(`users?page=${currentPage}&count=${pageSize}`)
+    .then(response => response.data)
+}
+
+export const followRequest = (userId) => {
+  return axiosInstance
+    .delete(`https://social-network.samuraijs.com/api/1.0/follow/${userId}`)
+    .then(response => response.data)
+}
+
+export const unfollowRequest = (userId) => {
+  return axiosInstance
+    .post(`https://social-network.samuraijs.com/api/1.0/follow/${userId}`, {})
     .then(response => response.data)
 }
