@@ -25,3 +25,15 @@ export const unfollowRequest = (userId) => {
     .post(`https://social-network.samuraijs.com/api/1.0/follow/${userId}`, {})
     .then(response => response.data)
 }
+
+export const getProfile = (userId) => {
+  return axiosInstance
+    .get(`https://social-network.samuraijs.com/api/1.0/profile/${userId || '2'}`)
+    .then(response => response.data)
+}
+
+export const auth = () => {
+  return axiosInstance
+    .get(`https://social-network.samuraijs.com/api/1.0/auth/me`)
+    .then(response => response)
+}

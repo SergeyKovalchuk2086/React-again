@@ -12,8 +12,10 @@ import Preloader from "../Preloader/Preloader";
 class UsersCont extends React.Component {
   //запрос юзеров
   componentDidMount() {
-    //thunk функция
-    this.props.getUsersThunkCreator(this.props.currentPage, this.props.pageSize)
+    if (!this.props.totalUsersCount) {
+      //thunk функция
+      this.props.getUsersThunkCreator(this.props.currentPage, this.props.pageSize)
+    }
   }
 
   //пагинация

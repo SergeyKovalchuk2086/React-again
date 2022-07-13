@@ -1,7 +1,6 @@
 import React from "react";
 import './Users.css'
 import {NavLink} from "react-router-dom";
-import axios from "axios";
 
 let users = (props) => {
   let pagesCount = Math.ceil(props.totalUsersCount / props.pageSize )
@@ -14,39 +13,10 @@ let users = (props) => {
 
   let requestFollow = (userId) => {
     props.followThunkCreator(userId)
-    // props.setInProgress(true)
-    // axios
-    //   .delete(`https://social-network.samuraijs.com/api/1.0/follow/${userId}`, {
-    //     withCredentials: true,
-    //     headers: {
-    //       'API-KEY' : 'badf1b4f-6a6a-4fe5-a6ed-482f613ccdfd'
-    //     }
-    //   })
-    //   .then(response => {
-    //     if (response.data.resultCode === 0) {
-    //       props.follow(userId)
-    //     }
-    //     props.setInProgress(false)
-    //   })
   }
 
   let requestUnfollow = (userId) => {
     props.unfollowThunkCreator(userId)
-
-    // props.setInProgress(true)
-    // axios
-    //   .post(`https://social-network.samuraijs.com/api/1.0/follow/${userId}`, {}, {
-    //     withCredentials: true,
-    //     headers: {
-    //       'API-KEY': 'badf1b4f-6a6a-4fe5-a6ed-482f613ccdfd'
-    //     }
-    //   })
-    //   .then(response => {
-    //     if (response.data.resultCode === 0) {
-    //       props.unfollow(userId)
-    //     }
-    //     props.setInProgress(false)
-    //   })
   }
 
   return ( <div className='users__container'>
@@ -80,7 +50,7 @@ let users = (props) => {
         Pages : {
         pages.map(page => {
           return <span onClick={ (event) => props.changePage(page) }
-                       className={ props.currentPage === page && 'current' }>
+                       className={ props.currentPage === page ? 'current' : '' }>
                         { page }
                     </span>
         })

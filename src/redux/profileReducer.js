@@ -1,4 +1,5 @@
 import constants from "../constant";
+import {getProfile} from "../api/api";
 
 let initialState = {
 	profile: null,
@@ -59,6 +60,13 @@ export const setUserProfile = (userProfile) => {
 	return {
 		type: constants.SET_USER_PROFILE,
 		userProfile: userProfile
+	}
+}
+
+export const getProfileThunk = (userId) => {
+	return (dispatch) => {
+		getProfile(userId)
+			.then(response => dispatch(setUserProfile(response)))
 	}
 }
 
